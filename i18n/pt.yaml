@@ -1,0 +1,20 @@
+---
+name: "Fulano de Tal"
+role: "Engenheiro de Software Sênior"
+contact: "email@exemplo.com | github.com/fulano"
+summary_title: "Resumo"
+summary: "Desenvolvedor focado em automação e DevOps..."
+experience_title: "Experiência"
+jobs:
+  - title: "Tech Lead"
+    company: "Empresa X"
+    date: "2020 - Atual"
+    details:
+      - "Liderei equipe de 5 devs."
+      - "Implementei CI/CD com GitHub Actions."
+  - title: "Dev Pleno"
+    company: "Empresa Y"
+    date: "2018 - 2020"
+    details:
+      - "Refatoração de legado."
+---
