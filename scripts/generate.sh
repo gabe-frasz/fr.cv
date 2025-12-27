@@ -1,6 +1,9 @@
 #!/bin/bash
 
-mkdir -p output
+output_dir="generated"
+temp_md="temp_cv.md"
+
+mkdir -p $output_dir
 
 for layout_path in layouts/*.md; do
   layout_name=$(basename "$layout_path" .md)
@@ -8,12 +11,11 @@ for layout_path in layouts/*.md; do
   echo "🏗️ Processing layout: $layout_name"
 
   for i18n_path in i18n/*.yaml; do
-    lang_name=$(basename "$i18n_path" .yaml)
+    lang=$(basename "$i18n_path" .yaml)
         
-    echo "🌍 Language: $lang_name"
+    echo "🌍 Language: $lang"
         
-    temp_md="temp_cv.md"
-    pdf_file="output/cv-${layout_name}-${lang_name}.pdf"
+    pdf_file="$output_dir/cv-$layout_name-$lang.pdf"
 
     echo "" | pandoc \
       --from markdown \
@@ -25,11 +27,11 @@ for layout_path in layouts/*.md; do
     pandoc "$temp_md" \
       --css=css/global.css \
       --pdf-engine=weasyprint \
-      --metadata pagetitle="cv $layout_name - $lang_name" \
+      --metadata pagetitle="cv-$layout_name-$lang" \
       -o "$pdf_file"
 
     echo "✅ Generated: $pdf_file"
   done
 done
 
-rm temp_cv.md
+rm $temp_md
